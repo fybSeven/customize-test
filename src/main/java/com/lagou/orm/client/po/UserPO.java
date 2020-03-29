@@ -1,7 +1,8 @@
 package com.lagou.orm.client.po;
 
 import lombok.Data;
-import lombok.ToString;
+
+import java.util.List;
 
 /**
  * @Author: fengyibo
@@ -9,7 +10,6 @@ import lombok.ToString;
  * @Description:
  */
 @Data
-@ToString
 public class UserPO {
 
     /**
@@ -22,11 +22,25 @@ public class UserPO {
      */
     private String username;
 
+    /**
+     * 订单信息
+     */
+    private List<OrderPo> orders;
+
     public UserPO() {
     }
 
     public UserPO(Integer id, String username) {
         this.id = id;
         this.username = username;
+    }
+
+    @Override
+    public String toString() {
+        return "UserPO{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", orders=" + orders +
+                '}';
     }
 }
