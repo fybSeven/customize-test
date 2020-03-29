@@ -23,9 +23,12 @@
 <!--        <plugin interceptor="com.lagou.orm.client.plugin.MyPlugin">
             <property name="id" value="4"/>
         </plugin>-->
-        <plugin interceptor="com.github.pagehelper.PageHelper">
-        <property name="dialect" value="mysql"/>
-    </plugin>
+        <!--<plugin interceptor="com.github.pagehelper.PageHelper">
+            <property name="dialect" value="mysql"/>
+        </plugin>-->
+        <plugin interceptor="tk.mybatis.mapper.mapperhelper.MapperInterceptor">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+        </plugin>
     </plugins>
 
     <!--environments:运行环境-->
@@ -47,6 +50,7 @@
     <mappers>
         <mapper class="com.lagou.orm.client.dao.UserDao"/>
         <mapper class="com.lagou.orm.client.dao.OrderDao"/>
+        <mapper class="com.lagou.orm.client.dao.UserMapper"/>
     </mappers>
 
 

@@ -3,6 +3,7 @@ package com.lagou.orm.client.service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lagou.orm.client.dao.UserDao;
+import com.lagou.orm.client.dao.UserMapper;
 import com.lagou.orm.client.po.UserPO;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -10,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Before;
 import org.junit.Test;
+import tk.mybatis.mapper.entity.Example;
 
 import java.io.IOException;
 import java.util.List;
@@ -50,6 +52,17 @@ public class UserService {
         for (UserPO userPO : userPOS) {
             System.out.println(userPO);
         }
+    }
+
+    @Test
+    public void test(){
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        UserPO userPO = mapper.selectOne(new UserPO(1, null));
+        System.out.println(userPO);
+        Example example=new Example(UserPO.class);
+        example.createCriteria().andLike("username", "%李%");
+        List<UserPO> users1 = mapper.selectByExample(example);
+        System.out.println(users1);
     }
 
 

@@ -2,7 +2,10 @@ package com.lagou.orm.client.po;
 
 import lombok.Data;
 
-import java.util.List;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * @Author: fengyibo
@@ -10,11 +13,14 @@ import java.util.List;
  * @Description:
  */
 @Data
+@Table(name = "user")
 public class UserPO {
 
     /**
      * id
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     /**
@@ -25,7 +31,7 @@ public class UserPO {
     /**
      * 订单信息
      */
-    private List<OrderPo> orders;
+//    private List<OrderPo> orders;
 
     public UserPO() {
     }
@@ -40,7 +46,6 @@ public class UserPO {
         return "UserPO{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", orders=" + orders +
                 '}';
     }
 }
