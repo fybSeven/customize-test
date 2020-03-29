@@ -37,7 +37,7 @@ public class UserService {
         for (UserPO userPO : userPOS) {
             System.out.println(userPO);
         }
-        PageInfo<UserPO> pageInfo = new PageInfo<UserPO>(userPOS);
+        PageInfo<UserPO> pageInfo = new PageInfo<>(userPOS);
         System.out.println("总记录数"+pageInfo.getTotal());
         System.out.println("总页数"+pageInfo.getPages());
         System.out.println("是否为最后一页"+pageInfo.isIsLastPage());
