@@ -1,0 +1,10 @@
+<mapper namespace="com.lagou.orm.client.dao.UserDao">
+
+    <select id="findAll" resultType="com.lagou.orm.client.po.UserPO">
+        SELECT * FROM user
+    </select>
+
+    <select id="findById" resultType="com.lagou.orm.client.po.UserPO" parameterType="com.lagou.orm.client.po.UserPO">
+        SELECT * FROM user WHERE id = #{id}
+    </select>
+</mapper>
